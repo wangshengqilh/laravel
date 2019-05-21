@@ -16,7 +16,9 @@ Route::group([
     $router->resource('/users',UsersController::class);
     $router->resource('/wxuser',WeixinController::class);	//微信用户管理
     $router->resource('/wxmedia',WeixinMediaController::class); //微信素材管理
+    $router->resource('/license',LicenseController::class); //营业执照管理
 
     $router->get('/weixin/sendmsg','WeixinController@sendMsgView');      //
     $router->post('/weixin/sendmsg','WeixinController@sendMsg');
+    $router->post('/status','LicenseController@status');
 });

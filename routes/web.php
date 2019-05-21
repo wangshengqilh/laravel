@@ -243,3 +243,17 @@ Route::any('logins','Test\LoginController@logins');
 Route::any('curl','Test\CeController@curl');
 
 Route::resource('good',ResourceController::class);
+
+//接口
+Route::any('/jiekou/reg','Jiekou\RegController@reg');
+Route::post('/jiekou/regadd','Jiekou\RegController@regadd');
+Route::any('/license/reg','License\RegController@reg');
+Route::post('/license/regadd','License\RegController@regadd');
+Route::any('/license/logins','License\RegController@logins');
+Route::any('/license/img','License\RegController@img');
+Route::any('/license/login','License\RegController@login');
+Route::any('/license/center','License\RegController@center');
+Route::get('/license/token','License\RegController@token')->middleware('check');
+Route::get('/license/ip','License\RegController@ip')->middleware('check');
+Route::get('/license/useragent','License\RegController@useragent')->middleware('check');
+Route::get('/license/usershow','License\RegController@usershow')->middleware('check');

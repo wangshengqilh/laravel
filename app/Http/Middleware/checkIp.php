@@ -26,6 +26,8 @@ class checkIp
         $redis_key = 'str:' . $mPath . ':' . $uip;
         # incr   默认+1  返回次数
         $num = Redis::incr($redis_key);//  储存用户+访问的路由
+        echo $num;
+        echo "<br>";
         Redis::expire($redis_key, 60);
         # 一分钟 20 次   上限
         if ($num >10) {

@@ -8,11 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<form action="/use/loginfo" method="post">
-    用户名：<input type="text" name="name"><br>
-    密码：<input type="password" name="pass"><br>
-    邮箱：<input type="email" name="email"><br>
-    <input type="submit" value="登录">
-</form>
+    <h1>欢迎来到个人中心</h1>
 </body>
 </html>
