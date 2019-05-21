@@ -141,16 +141,16 @@ class RegController extends Controller
     }
     public function usershow(){
         $token=$_GET['token'];
-        $id=$_GET['id'];
+        $appid=$_GET['appid'];
         if(empty($token)){
             return json_encode(['code'=>1,'msg'=>'token不能为空'],256);
         }
-        if(empty($id)){
-            return json_encode(['code'=>1,'msg'=>'id不能为空'],256);
+        if(empty($appid)){
+            return json_encode(['code'=>1,'msg'=>'appid不能为空'],256);
         }
         $arr=Redis::get("access_toekn");
         if($arr==$token){
-            $data=LicenseModel::where(['id'=>$id])->first();
+            $data=LicenseModel::where(['appid'=>$appid])->first();
             if($data){
                 return json_encode(['code'=>0,'msg'=>'查询成功','usershow'=>$data->toArray()],256);
             }else{
