@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<form onsubmit="return false">
+<form enctype="" onsubmit="return false">
     <table>
         <tr>
             <td>名称</td>

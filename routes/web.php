@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    //echo __FILE__;echo '</br>';
-    //echo date('Y-m-d H:i:s');
-//    return view('welcome');
-    phpinfo();
+    echo __FILE__;echo '</br>';
+    echo date('Y-m-d H:i:s');
+    return view('welcome');
+//    phpinfo();
 });
 
 Route::group([

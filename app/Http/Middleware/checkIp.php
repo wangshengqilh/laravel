@@ -17,21 +17,23 @@ class checkIp
      */
     public function handle($request, Closure $next)
     {
-        # 用户ip
+        //用户ip
         $uip = $_SERVER['SERVER_ADDR'];
-        # 访问的接口
+        //访问的接口
         $path = $_SERVER['REQUEST_URI'];
-        # 加密路由
-        $mPath = substr(md5($path), 0, 10);
+        $arr=explode('?',$path);
+        $mPath=$arr['0'];
+        //加密路由
+//        $mPath = substr(md5($path), 0, 10);
         $redis_key = 'str:' . $mPath . ':' . $uip;
-        # incr   默认+1  返回次数
+        //incr   默认+1  返回次数
         $num = Redis::incr($redis_key);//  储存用户+访问的路由
         echo $num;
         echo "<br>";
         Redis::expire($redis_key, 60);
-        # 一分钟 20 次   上限
+        //一分钟 20 次   上限
         if ($num >10) {
-            # 防刷
+            //防刷
             $response = [
 //                'errCode' => 45019
                  'errMsg' => '访问过于频繁'
