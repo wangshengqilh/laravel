@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\License;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 use App\Model\LicenseModel;
@@ -24,6 +25,7 @@ class RegController extends Controller
         $addtime=time();
         $endtime=$request->input('endtime');
         $scope=$request->input('scope');
+        $uid=Auth::id();
 //        $imgs=$request->input('imgs');
         $arr=LicenseModel::where('name',$name)->first();
         if($arr){
@@ -41,7 +43,8 @@ class RegController extends Controller
             'num'=>$num,
             'addtime'=>$addtime,
             'endtime'=>$endtime,
-            'scope'=>$scope
+            'scope'=>$scope,
+            'uid'=>$uid
 //            'img'=>$imgs
         ];
         $res=LicenseModel::insert($data);
