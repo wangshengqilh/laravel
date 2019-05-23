@@ -135,18 +135,17 @@ class WeixinController extends Controller
         //获取缓存
         $token = Redis::get($this->redis_weixin_access_token);
         if(!$token){        // 无缓存 请求微信接口
-            $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.env('WEIXIN_APPID').'&secret='.env('WEIXIN_APPSECRET');
+            $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxd999d44b4b98d11f&secret=a62c2082b9fd16fca130e175b24a61bf';
             $data = json_decode(file_get_contents($url),true);
-
             //记录缓存
             $token = $data['access_token'];
             Redis::set($this->redis_weixin_access_token,$token);
             Redis::setTimeout($this->redis_weixin_access_token,3600);
         }
         return $token;
-        $redis=new Redis();
-        $redis->connect('123.207.136.44',6379);
-        echo "Connection to server sucessfully";
+//        $redis=new Redis();
+//        $redis->connect('123.207.136.44',6379);
+//        echo "Connection to server sucessfully";
     }
 
     /**
@@ -260,6 +259,7 @@ class WeixinController extends Controller
         ]);
 
         $body = $response->getBody();
+        print_R($body);exit;
         echo $body;echo '<hr>';
         $d = json_decode($body,true);
         echo '<pre>';print_r($d);echo '</pre>';
@@ -638,7 +638,7 @@ class WeixinController extends Controller
     //    }
     //    }
     //     //给粉丝打标签
-    //    public function OpenidTag(){
+    //    public function OpenidTapg(){
     //      $openid = "otkFz0rnF8Yy51K1LbWL4fwM7wSs";
     //      //给粉丝打标签
     //      $api = "https://api.weixin.qq.com/cgi-bin/tags/members/batchtagging?access_token=" . getAccess_token();
@@ -653,4 +653,26 @@ class WeixinController extends Controller
     //    public function hei(){
 
     //    }
+
+    public function openid(){
+        $url="https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=".$this->getWXAccessToken();
+        $client = new GuzzleHttp\Client();
+        $body=[
+            "touser"=>[
+                "oMpIq6BNa3ozvw2YLlR6U9F6JIvI",
+                "oMpIq6Bwrv2v80Mb3ZeHQn9yjrTE"
+            ],
+            "msgtype"=> "text",
+            "text"=> [
+                "content"=> date('Y-m-d H:i:s',time())
+            ],
+        ];
+        $response = $client->request('POST',$url,[
+            'body' => json_encode($body)
+        ]);
+        $body = $response->getBody();
+        echo $body;echo '<hr>';
+        $arr = json_decode($response->getBody(),true);
+        echo '<pre>';print_r($arr);echo '</pre>';
+    }
 }

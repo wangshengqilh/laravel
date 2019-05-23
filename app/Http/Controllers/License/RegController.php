@@ -163,4 +163,25 @@ class RegController extends Controller
             return json_encode(['code'=>1,'msg'=>'数据不合法'],256);
         }
     }
+    public function qd(){
+        $today = strtotime(date("Y-m-d"),time());
+        $end = $today+60*60*24;
+        $t=date("Y-m-d H:i:s", $end);
+        $uid=Auth::id();
+        $time=time();
+        $date=date('Y-m-d',$time);
+        $key='str:'.$date.':qd';
+        $keys='id:'.$uid;
+        $arr=Redis::get($keys);
+//        $e=Redis::bitcount($key);
+        if($arr!=$uid){
+            Redis::setbit($key,$uid,1);
+            Redis::set($keys,$uid);
+            Redis::expire($keys,86400);
+            Redis::expire($key,86400);
+            return json_encode(['code'=>0,'msg'=>'签到成功'],256);
+        }else{
+            return json_encode(['code'=>1,'msg'=>'您今天已经签过了，请明天再来'],256);
+        }
+    }
 }

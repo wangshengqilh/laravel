@@ -169,7 +169,7 @@ Route::get('/weixin/valid1','Weixin\WeixinController@validToken1');
 Route::post('/weixin/valid1','Weixin\WeixinController@wxEvent');        //接收微信服务器事件推送
 Route::post('/weixin/valid','Weixin\WeixinController@validToken');
 Route::get('/weixin/create_menu','Weixin\WeixinController@createMenu');     //创建菜单
-
+Route::get('/weixin/openid','Weixin\WeixinController@openid');     //创建菜单
 
 Route::get('/form/show','Weixin\WeixinController@formShow');     //表单测试
 Route::post('/form/test','Weixin\WeixinController@formTest');     //表单测试
@@ -247,10 +247,11 @@ Route::resource('good',ResourceController::class);
 //接口
 Route::any('/jiekou/reg','Jiekou\RegController@reg');
 Route::post('/jiekou/regadd','Jiekou\RegController@regadd');
-Route::any('/license/reg','License\RegController@reg');
+Route::any('/license/reg','License\RegController@reg')->middleware('auth');
 Route::post('/license/regadd','License\RegController@regadd');
 Route::any('/license/logins','License\RegController@logins');
 Route::any('/license/img','License\RegController@img');
+Route::any('/license/qd','License\RegController@qd');
 Route::any('/license/login','License\RegController@login')->middleware('auth');
 Route::any('/license/center','License\RegController@center')->middleware('auth');
 Route::get('/license/token','License\RegController@token')->middleware('check');

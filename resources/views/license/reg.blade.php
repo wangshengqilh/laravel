@@ -5,46 +5,54 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="{{ asset('js/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{asset('js/ajaxfileupload.js')}}"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
-<form enctype="" onsubmit="return false">
+<div class="container">
+<form enctype="" onsubmit="return false" class="form-signin">
+    <h2 class="form-signin-heading">Please reg</h2>
     <table>
         <tr>
-            <td>名称</td>
-            <td><input type="text" name="name"></td>
+            <td class="lead">名称</td>
+            <td><input type="text" name="name" class="form-control"></td>
         </tr>
         <tr>
-            <td>密码</td>
-            <td><input type="password" name="pass1"></td>
+            <td class="lead">密码</td>
+            <td><input type="password" name="pass1" class="form-control"></td>
         </tr>
         <tr>
-            <td>确认密码</td>
-            <td><input type="password" name="pass2"></td>
+            <td class="lead">确认密码</td>
+            <td><input type="password" name="pass2" class="form-control"></td>
         </tr>
         <tr>
-            <td>类型</td>
-            <td><input type="text" name="type"></td>
+            <td class="lead">类型</td>
+            <td><input type="text" name="type" class="form-control"></td>
         </tr>
         <tr>
-            <td>住所</td>
-            <td><input type="text" name="home"></td>
+            <td class="lead">住所</td>
+            <td><input type="text" name="home" class="form-control"></td>
         </tr>
         <tr>
-            <td>法定代表人</td>
-            <td><input type="text" name="user"></td>
+            <td class="lead">法定代表人</td>
+            <td><input type="text" name="user" class="form-control"></td>
         </tr>
         <tr>
-            <td>注册资本</td>
-            <td><input type="text" name="num"></td>
+            <td class="lead">注册资本</td>
+            <td><input type="text" name="num" class="form-control"></td>
         </tr>
         <tr>
-            <td>营业期限</td>
-            <td><input type="text" name="endtime"></td>
+            <td class="lead">营业期限</td>
+            <td><input type="text" name="endtime" class="form-control"></td>
         </tr>
         <tr>
-            <td>经营范围</td>
-            <td><input type="text" name="scope"></td>
+            <td class="lead">经营范围</td>
+            <td><input type="text" name="scope" class="form-control"></td>
         </tr>
         {{--<tr>--}}
             {{--<td>文件上传</td>--}}
@@ -52,15 +60,14 @@
         {{--</tr>--}}
         <tr>
             <td></td>
-            <td><button class="reg">注册</button></td>
+            <td><button class="reg btn btn-lg btn-primary btn-block">注册</button></td>
             {{--<td><input type="hidden" id="imgs"></td>--}}
         </tr>
     </table>
 </form>
+</div>
 </body>
 </html>
-<script src="{{ asset('js/jquery-1.12.4.min.js') }}"></script>
-<script src="{{asset('js/ajaxfileupload.js')}}"></script>
 <script>
     $(function () {
         $('.reg').click(function(){
