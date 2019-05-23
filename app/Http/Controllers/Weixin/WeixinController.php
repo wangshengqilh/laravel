@@ -137,6 +137,7 @@ class WeixinController extends Controller
         if(!$token){        // 无缓存 请求微信接口
             $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxd999d44b4b98d11f&secret=a62c2082b9fd16fca130e175b24a61bf';
             $data = json_decode(file_get_contents($url),true);
+            dump($data);
             //记录缓存
             $token = $data['access_token'];
             Redis::set($this->redis_weixin_access_token,$token);
