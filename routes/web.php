@@ -68,6 +68,7 @@ Route::any('/test/abc','Test\TestController@abc');
 
 Route::get('/view/test1','Test\TestController@viewTest1');
 Route::get('/view/test2','Test\TestController@viewTest2');
+Route::get('/view/test3','Test\TextController@wsq');
 
 
 

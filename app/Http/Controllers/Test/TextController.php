@@ -75,4 +75,7 @@ class TextController extends Controller{
         $arr=DB::table('p_goods')->paginate(2)->toArray()['data'];
         return json_encode($arr);
     }
+    public function wsq(){
+        return view('shop.mstore.index');
+    }
 }
